@@ -117,7 +117,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             countdown();
             const pageUrl = encodeURIComponent(window.location.href);
-            const message = encodeURIComponent("🎉 سال نو مبارک! بیا ببین چقدر تا نوروز ۱۴۰۴ باقی مونده! 🌸");
+            const message = encodeURIComponent("🎉 سال نو مبارک! بیا ببین چقدر تا نوروز ۲۵۸۴ باقی مونده! 🌸");
 
             document.getElementById("shareTelegram").href = `https://t.me/share/url?url=${pageUrl}&text=${message}`;
             document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${message} ${pageUrl}`;
@@ -130,7 +130,7 @@
         <h1>به سایت نوروزی خوش آمدید! 🌸🎉</h1>
         <p>تا سال تحویل: <span id="countdown"></span></p>
         <div class="countdown-container">
-            <p>شمارش معکوس تا نوروز ۱۴۰۴</p>
+            <p>شمارش معکوس تا نوروز ۲۵۸۴</p>
         </div>
         <a href="{% url 'about' %}" class="button">درباره ما</a>
         <div class="share-buttons">
