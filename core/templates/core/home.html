@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نوروز ۱۴۰۴</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #2980b9;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+
+        #countdown {
+            font-size: 36px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 30px;
+            animation: countdownAnimation 1s ease-in-out;
+        }
+
+        @keyframes countdownAnimation {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3498db;
+        }
+
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .share-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-buttons .button {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    </style>
+    <script>
+        function countdown() {
+            const now = new Date().getTime();
+            const newYear = new Date("2025-03-20T13:06:00+03:30").getTime();
+            const timeLeft = newYear - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById("countdown").innerHTML = `${days} روز، ${hours} ساعت، ${minutes} دقیقه، ${seconds} ثانیه`;
+                setTimeout(countdown, 1000);
+            } else {
+                document.getElementById("countdown").innerHTML = "سال نو مبارک! 🎉";
+                document.getElementById("newYearMessage").style.display = "block";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            countdown();
+            const pageUrl = encodeURIComponent(window.location.href);
+            const message = encodeURIComponent("🎉 سال نو مبارک! بیا ببین چقدر تا نوروز ۱۴۰۴ باقی مونده! 🌸");
+
+            document.getElementById("shareTelegram").href = `https://t.me/share/url?url=${pageUrl}&text=${message}`;
+            document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${message} ${pageUrl}`;
+            document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${message}&url=${pageUrl}`;
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>به سایت نوروزی خوش آمدید! 🌸🎉</h1>
+        <p>تا سال تحویل: <span id="countdown"></span></p>
+        <div class="countdown-container">
+            <p>شمارش معکوس تا نوروز ۱۴۰۴</p>
+        </div>
+        <a href="{% url 'about' %}" class="button">درباره ما</a>
+        <div class="share-buttons">
+            <a href="#" id="shareTelegram" class="button">📢 اشتراک در تلگرام</a>
+            <a href="#" id="shareWhatsApp" class="button">📱 اشتراک در واتساپ</a>
+            <a href="#" id="shareTwitter" class="button">🐦 اشتراک در توییتر</a>
+        </div>
+        <div id="newYearMessage" class="message">
+            <p>سال نو مبارک! 🎉</p>
+        </div>
+    </div>
+</body>
+</html>

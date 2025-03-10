@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+__pycache__/
+local_settings.py
+venv/
+.env/
+db.sqlite3
+.idea/
+.vscode/
+/static/
+media/
+*.log
+*.bak
+*.swp
